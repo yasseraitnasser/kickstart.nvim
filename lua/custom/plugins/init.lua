@@ -5,4 +5,18 @@
 
 ---@module 'lazy'
 ---@type LazySpec
-return {}
+return {
+  { 'folke/tokyonight.nvim', enabled = false },
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000, -- Load this first to ensure it's applied to the UI
+    lazy = false,
+    config = function()
+      -- Optional: Set background before applying the theme
+      vim.o.background = 'dark' -- or "light"
+
+      -- Load the colorscheme
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+}
